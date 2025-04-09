@@ -1,0 +1,9 @@
+body {
+  box-sizing: border-box;
+  background-color: hsl(235, 33%, 21%);
+  color: hsl(208, 69.20%, 72.00%);
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
