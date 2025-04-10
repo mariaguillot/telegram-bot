@@ -1,6 +1,6 @@
 body {
   box-sizing: border-box;
-  
+
   background-color: hsl(235, 33%, 21%);
 
   color: hsl(208, 69.20%, 72.00%);
@@ -11,4 +11,3 @@ body {
 
   gap: 0.5rem;
 }
-

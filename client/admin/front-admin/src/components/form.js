@@ -1,17 +1,16 @@
 class Form extends HTMLElement {
-
-  constructor() {
+  constructor () {
     super()
     this.shadow = this.attachShadow({ mode: 'open' })
   }
 
-  async connectedCallback() {
+  async connectedCallback () {
     await this.render()
   }
 
-render() {
-  this.shadow.innerHTML =
-  /*html*/`
+  render () {
+    this.shadow.innerHTML =
+      /* html */`
     <style>
       *{
         box-sizing: border-box;
@@ -108,4 +107,3 @@ render() {
 }
 
 customElements.define('form-component', Form)
-

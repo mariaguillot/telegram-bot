@@ -1,26 +1,25 @@
 class Logo extends HTMLElement {
-
-  constructor() {
+  constructor () {
     super()
     this.shadow = this.attachShadow({ mode: 'open' })
 
     this.data = []
   }
 
-  async connectedCallback() {
+  async connectedCallback () {
     await this.loadData()
     await this.render()
   }
 
-  loadData() {
+  loadData () {
     this.data = {
-      title: "pedidos",
+      title: 'pedidos',
     }
   }
 
-render() {
-  this.shadow.innerHTML =
-  /*html*/`
+  render () {
+    this.shadow.innerHTML =
+      /* html */`
     <style>
       
       *{
