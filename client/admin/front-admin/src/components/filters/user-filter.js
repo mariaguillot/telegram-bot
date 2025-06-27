@@ -1,0 +1,143 @@
+class UserFilter extends HTMLElement {
+  constructor () {
+    super()
+    this.shadow = this.attachShadow({ mode: 'open' })
+    this.endpoint = ''
+    this.tableEndpoint = ''
+
+    document.addEventListener('showFilterModal', this.showFilterModal.bind(this))
+  }
+
+  async connectedCallback () {
+    await this.render()
+  }
+
+  showFilterModal (event) {
+    this.shadow.querySelector('.overlay').classList.add('active')
+  }
+
+  render () {
+    this.shadow.innerHTML =
+      /* html */`
+    <style>
+      *{
+        box-sizing: border-box;
+      }
+
+      .form-element{
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 1rem;
+      }
+
+      .form-inputs{
+        display: flex;
+        flex-direction: column;
+        text-align: center;
+        gap: 1rem;
+      }
+
+      .overlay{
+        align-items: center;
+        background-color: hsl(0, 0%, 0%, 0.7);
+        display: flex;
+        height: 100vh;
+        justify-content: center;
+        left: 0;
+        position: fixed;
+        top: 0;
+        width: 100%;
+        opacity: 0;
+        visibility: hidden;
+        transition: opacity 0.3s, visibility 0.3s;
+      }
+
+      .overlay.active{
+        opacity: 1;
+        visibility: visible;
+      }
+
+      .validate {
+        background-color: wheat;
+        padding: 1rem;
+        display: flex;
+        flex-direction: column;
+        text-align: center;
+        gap: 2rem;
+        border: 2px solid;
+        border-color: hsl(0, 0%, 0%);
+        width: 25%;
+      }
+
+      .option-buttons{
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+      }
+
+    </style>
+
+<div class="overlay">
+      
+    
+      <section class="validate">
+        <div class="form-body">
+          <form>
+            <div class="form-inputs">
+              <div class="form-element">
+                <div class="form-element-label">
+                  <label>Nombre</label>
+                </div>
+                <div class="form-element-input">
+                  <input type="text" placeholder="complete name" name="name">
+                </div>
+              </div>
+              <div class="form-element">
+                <div class="form-element-label">
+                  <label>Email</label>
+                </div>
+                <div class="form-element-input">
+                  <input type="text" placeholder="complete email" name="email">
+                </div>
+              </div>
+            </div>
+          </form>
+        </div>
+        <div calss= "notice-info">
+          <span>Está seguro que quiere filtrar</span>
+        </div>
+        <div class="option-buttons">
+          <div class="acepted-button">
+            <button class="acepted-button">Sí</button>
+          </div>
+          <div class="denied-button">
+            <button>No</button>
+          </div> 
+        </div> 
+      </section>
+    </div>
+    `
+
+    this.renderButtons()
+  }
+
+  renderButtons () {
+    const aceptedButton = this.shadow.querySelector('.acepted-button')
+    const deniedButton = this.shadow.querySelector('.denied-button')
+
+    aceptedButton.addEventListener('click', async () => {
+      try {
+        this.shadow.querySelector('.overlay').classList.remove('active')
+      } catch (error) {
+        this.shadow.querySelector('.overlay').classList.remove('active')
+      }
+
+      this.shadow.querySelector('.overlay').classList.remove('active')
+    })
+
+    deniedButton.addEventListener('click', event => {
+      this.shadow.querySelector('.overlay').classList.remove('active')
+    })
+  }
+}
+customElements.define('users-filter-component', UserFilter)

@@ -24,6 +24,7 @@ class Logo extends HTMLElement {
       
       *{
         box-sizing: border-box;
+        font-family: "Nunito Sans", sans-serif;
       }
 
       h3{
