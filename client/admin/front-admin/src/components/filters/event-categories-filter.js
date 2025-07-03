@@ -1,11 +1,11 @@
 import { store } from '../../redux/store.js'
 import { setFilterQuery } from '../../redux/crud-slice.js'
 
-class UserFilter extends HTMLElement {
+class EventCategoryFilter extends HTMLElement {
   constructor () {
     super()
     this.shadow = this.attachShadow({ mode: 'open' })
-    this.endpoint = '/api/admin/users'
+    this.endpoint = 'admin/event-categories'
     this.tableEndpoint = ''
 
     document.addEventListener('showFilterModal', this.showFilterModal.bind(this))
@@ -97,14 +97,6 @@ class UserFilter extends HTMLElement {
                   <input type="text" placeholder="complete name" name="name">
                 </div>
               </div>
-              <div class="form-element">
-                <div class="form-element-label">
-                  <label>Email</label>
-                </div>
-                <div class="form-element-input">
-                  <input type="text" placeholder="complete email" name="email">
-                </div>
-              </div>
             </div>
           </form>
         </div>
@@ -174,4 +166,4 @@ class UserFilter extends HTMLElement {
     })
   }
 }
-customElements.define('users-filter-component', UserFilter)
+customElements.define('event-categories-filter-component', EventCategoryFilter)

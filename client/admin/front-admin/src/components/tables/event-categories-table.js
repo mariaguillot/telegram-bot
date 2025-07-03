@@ -1,11 +1,11 @@
 import { store } from '../../redux/store.js'
 import { showFormElement } from '../../redux/crud-slice.js'
 
-class UserTable extends HTMLElement {
+class EventCategoryTable extends HTMLElement {
   constructor () {
     super()
     this.shadow = this.attachShadow({ mode: 'open' })
-    this.endpoint = '/api/admin/users'
+    this.endpoint = '/api/admin/event-categories'
     this.filterQuery = null
     this.unsubscribe = null
   }
@@ -173,12 +173,6 @@ class UserTable extends HTMLElement {
       </div>
     </section>
     `
-    if (this.data.rows.length === 0) {
-      const bodyTable = this.shadow.querySelector('.body-table')
-      const message = document.createElement('span')
-      message.textContent = 'No hay ningún registro'
-      bodyTable.appendChild(message)
-    }
 
     const bodyTableContainer = this.shadow.querySelector('.body-table')
 
@@ -218,10 +212,6 @@ class UserTable extends HTMLElement {
 
       let infoLi = document.createElement('li')
       infoLi.textContent = `Nombre: ${element.name}`
-      infoUl.appendChild(infoLi)
-
-      infoLi = document.createElement('li')
-      infoLi.textContent = `Email: ${element.email}`
       infoUl.appendChild(infoLi)
 
       infoLi = document.createElement('li')
@@ -302,4 +292,4 @@ class UserTable extends HTMLElement {
   }
 }
 
-customElements.define('users-table-component', UserTable)
+customElements.define('event-categories-table-component', EventCategoryTable)

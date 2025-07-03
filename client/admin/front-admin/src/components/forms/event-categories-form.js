@@ -2,11 +2,11 @@ import isEqual from 'lodash-es/isEqual'
 import { store } from '../../redux/store.js'
 import { refreshTable } from '../../redux/crud-slice.js'
 
-class UserForm extends HTMLElement {
+class EventCategoryForm extends HTMLElement {
   constructor () {
     super()
     this.shadow = this.attachShadow({ mode: 'open' })
-    this.endpoint = '/api/admin/users'
+    this.endpoint = '/api/admin/event-categories'
     this.unsubscribe = null
     this.formElementData = null
   }
@@ -182,7 +182,6 @@ class UserForm extends HTMLElement {
         <div class="form-tabs">
           <ul>
             <li class="tab active" data-tab="general">General</li>
-            <li class="tab" data-tab="images">Imágenes</li>
           </ul>
         </div>
         <div class= "buttons">
@@ -207,7 +206,6 @@ class UserForm extends HTMLElement {
         </div>
         <form>
           <input type="hidden" name="id">
-
           <div class="tab-content active" data-tab="general">
             <div class="form-element">
               <div class="form-element-label">
@@ -217,24 +215,6 @@ class UserForm extends HTMLElement {
                 <input type="text" placeholder="complete name" name="name">
               </div>
             </div>
-            <div class="form-element">
-              <div class="form-element-label">
-                <label>Email</label>
-              </div>
-              <div class="form-element-input">
-                <input type="text" placeholder="complete email" name="email">
-              </div>
-            </div>
-          </div>
-          <div class="tab-content" data-tab="images">
-            <div class="form-element">
-              <div class="form-element-label">
-                <label>Avatar</label>
-              </div>
-              <div class="form-element-input">
-                <input type="image" name="avatar">
-              </div>
-             </div>
           </div>
         </form>
       </div>
@@ -365,4 +345,4 @@ class UserForm extends HTMLElement {
   }
 }
 
-customElements.define('users-form-component', UserForm)
+customElements.define('event-categories-form-component', EventCategoryForm)
