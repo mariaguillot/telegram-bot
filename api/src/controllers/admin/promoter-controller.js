@@ -1,5 +1,5 @@
 const sequelizeDb = require('../../models/sequelize')
-const Controller = sequelizeDb.Custormer
+const Controller = sequelizeDb.Promoter
 const Op = sequelizeDb.Sequelize.Op
 
 exports.create = async (req, res, next) => {
